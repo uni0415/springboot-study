@@ -30,13 +30,14 @@ import com.springboot.study.handler.ex.CustomValidationApiExeption;
 @Aspect
 @Component
 public class ValidationAdvice {
-	public static Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
 	@Around("execution(* com.springboot.study.web.controller.api.*Controller.*(..))")
 	public Object ApiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		Object[] args = proceedingJoinPoint.getArgs();
 		for(Object arg : args) {
 			if(arg instanceof BindingResult) {
-				BindingResult bindingResult = (BindingResult)arg;
+				BindingResult bindingResult = (BindingResult) arg;
 				if(bindingResult.hasErrors()) {
 					Map<String, String> errorMap = new HashMap<String, String>();
 					for(FieldError error : bindingResult.getFieldErrors()) {
