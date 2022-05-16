@@ -34,6 +34,11 @@ public class BoardController {
 		return new ResponseEntity<>(new CMRespDto<List<BoardRespDto>>(1, "게시글 목록 로드", boardRespDtos),HttpStatus.OK);
 	}
 	
+	@GetMapping("/board/list/count")
+	public String getBoardListCount() throws Exception {
+		return Integer.toString(boardService.getBoardListCount());
+	}
+	
 	@PostMapping("/board")
 	public ResponseEntity<?> createBoard(@Valid BoardInsertReqDto BoardInsertReqDto, BindingResult bindingResult) throws Exception{
 		int board_code = boardService.createBoard(BoardInsertReqDto);

@@ -39,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
+	public int getBoardListCount() throws Exception {
+		return boardRepository.getBoardListCount();
+	}
+	
+	@Override
 	public List<BoardRespDto> getBoardListByPage(int page) throws Exception {
 		List<BoardRespDto> boardRespDtos = new ArrayList<BoardRespDto>();
 		

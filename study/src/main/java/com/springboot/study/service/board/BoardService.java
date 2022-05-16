@@ -13,4 +13,6 @@ public interface BoardService {
 	public BoardRespDto getBoard(int boardCode) throws Exception;
 	public int updateBoard(int boardCode, BoardUpdateReqDto boardUpdateReqDto) throws Exception;
 	public int deleteBoard(int boardCode) throws Exception;
+	public int getBoardListCount() throws Exception;
+	
 }

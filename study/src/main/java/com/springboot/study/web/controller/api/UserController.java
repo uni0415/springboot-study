@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.study.service.user.UserService;
 import com.springboot.study.web.controller.api.data.User;
 import com.springboot.study.web.dto.CMRespDto;
 import com.springboot.study.web.dto.SigninReqDto;
 import com.springboot.study.web.dto.SignupReqDto;
 import com.springboot.study.web.dto.UpdateUserReqDto;
 
-@RestController
-public class UserController {
+import lombok.RequiredArgsConstructor;
 
+@RestController
+@RequiredArgsConstructor
+public class UserController {
+	private final UserService userService;
+	
 	@GetMapping("/user/{usercode}")
 	public ResponseEntity<?> getUser(@PathVariable int usercode) {
 		System.out.println(usercode);
@@ -45,8 +50,8 @@ public class UserController {
 	}
 
 	@PostMapping("/auth/signup")
-	public ResponseEntity<?> signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) {
-		
+	public ResponseEntity<?> signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) throws Exception {
+		userService.signup(signupReqDto);
 		return new ResponseEntity<>(new CMRespDto<SignupReqDto>(1, "회원가입 완료", signupReqDto), HttpStatus.OK);
 	}
 

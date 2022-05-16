@@ -14,6 +14,13 @@
   		<id column="update_date" property="update_date"/>
   	</resultMap>
   	
+  	<select id="getBoardListCount" resultType="Integer">
+  		select
+  			count(board_code)
+  		from
+  			board_mst
+  	</select>
+  	
   	<select id="getBoardListAll" resultMap="boardMap">
   		select
   			bm.board_code,

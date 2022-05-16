@@ -13,4 +13,5 @@ public interface BoardRepository {
 	public Map<String, Object> getBoardByBoardCode(int boardCode) throws Exception;
 	public int updateBoard(BoardMst boardMst) throws Exception;
 	public int deleteBoard(int boardCode) throws Exception;
+	public int getBoardListCount() throws Exception;
 }

@@ -28,11 +28,11 @@
 			</table>
 		</div>
 		<div class="board-list-page">
-			<a href="/board?page=1">1</a>
+			<!-- <a href="/board?page=1">1</a>
 			<a href="/board?page=2">2</a>
 			<a href="/board?page=3">3</a>
 			<a href="/board?page=4">4</a>
-			<a href="/board?page=5">5</a>
+			<a href="/board?page=5">5</a> -->
 		</div>
 		
 	</div>

@@ -4,10 +4,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.springboot.study.domain.user.UserMst;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,4 +26,13 @@ public class SignupReqDto {
 			message = "비밀번호는 영문 대소문자와 숫자, 특수기호가 적어도 하나 이상 포함되어야 하며, 8~20자의 비밀번호여야 합니다.")
 	@NotBlank
 	private String password;
+	
+	public UserMst toEntity() {
+		return UserMst.builder()
+				.email(email)
+				.name(name)
+				.username(username)
+				.password(password)
+				.build();
+	}
 }
