@@ -12,29 +12,26 @@
 	<div id="container">
 		<div class="board-list">
 			<table class="board-list-table">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>조회수</th>
-					</tr>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+				</tr>
 				
-					<tbody>
-					
-					</tbody>
-				</thead>
+				<tr class="board-items">
+					<td>번호</td>
+					<td>제목</td>
+					<td>작성자</td>
+					<td>조회수</td>
+				</tr>
 			</table>
 		</div>
 		<div class="board-list-page">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
-			<div>4</div>
-			<div>5</div>
+			
 		</div>
 		
 	</div>
-	<script src="/js/board-list.js"></script>
+	<script src="/js/board-list2.js"></script>
 </body>
 </html>
