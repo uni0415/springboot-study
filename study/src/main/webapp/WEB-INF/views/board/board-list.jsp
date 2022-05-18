@@ -19,19 +19,18 @@
 						<th>작성자</th>
 						<th>조회수</th>
 					</tr>
-				
-					<tbody>
-					
-					</tbody>
 				</thead>
+				<tbody>
+				
+				</tbody>
 			</table>
 		</div>
-		<div class="board-list-page">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
-			<div>4</div>
-			<div>5</div>
+		<div class="page-box">
+		<div class="prev">이전</div>
+			<div class="board-list-page">
+			</div>
+		<div class="next">다음</div>
+			
 		</div>
 		
 	</div>

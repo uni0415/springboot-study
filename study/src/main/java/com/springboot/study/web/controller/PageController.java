@@ -14,11 +14,16 @@ public class PageController {
 	
 	@GetMapping("/board")
 	public String boardList() {
-		return "board/board-list2";
+		return "board/board-list";
 	}
 	
 	@GetMapping("/board/dtl/{boardCode}")
 	public String boardDtl(@PathVariable int boardCode) {
 		return "board/board-dtl";
+	}
+	
+	@GetMapping("/board/create")
+	public String boardInsert() {
+		return "board/board-insert";
 	}
 }

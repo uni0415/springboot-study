@@ -40,7 +40,12 @@
 	background-color: #fafafa;
 }
 
+th {
+	border: 1px solid black;
+	width: 100px;
+}
+
 td {
 	border: 1px solid black;
-	width: 200px;
+	width: 400px;
 }

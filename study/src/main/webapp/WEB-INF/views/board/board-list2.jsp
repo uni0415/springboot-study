@@ -27,10 +27,12 @@
 				</tr>
 			</table>
 		</div>
-		<div class="board-list-page">
-			
+		<div class="page-box">
+			<a href="" class="next">이전</a>
+			<div class="board-list-page">
+			</div>
+			<a href="" class="prev">다음</a>
 		</div>
-		
 	</div>
 	<script src="/js/board-list2.js"></script>
 </body>

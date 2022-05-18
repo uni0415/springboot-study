@@ -1,11 +1,11 @@
 const boardListTable = document.querySelector(".board-list-table");
 
 let path = window.location.pathname;
-alert(path.substring(path.lastIndexOf("/") + 1));
+
 load();
 
 function load() {
-	let boardCode = 1;
+	let boardCode = path.substring(path.lastIndexOf("/") + 1);
 	$.ajax({
 		type: "get",
 		url: `/board/${boardCode}`,

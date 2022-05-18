@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.study.service.board.BoardService;
@@ -40,14 +41,16 @@ public class BoardController {
 	}
 	
 	@PostMapping("/board")
-	public ResponseEntity<?> createBoard(@Valid BoardInsertReqDto BoardInsertReqDto, BindingResult bindingResult) throws Exception{
-		int board_code = boardService.createBoard(BoardInsertReqDto);
-		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 작성 완료", board_code), HttpStatus.OK);
+	public ResponseEntity<?> createBoard(@Valid @RequestBody BoardInsertReqDto boardInsertReqDto, BindingResult bindingResult) throws Exception{
+		System.out.println(boardInsertReqDto);
+		int board_code = boardService.createBoard(boardInsertReqDto);
+		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 작성 완료", board_code), HttpStatus.BAD_REQUEST);
 	}
 	
 	
 	@GetMapping("/board/{boardCode}")
 	public ResponseEntity<?> getBoard(@PathVariable int boardCode) throws Exception {
+		System.out.println(boardCode);
         BoardRespDto boardRespDto =  boardService.getBoard(boardCode);
 		return new ResponseEntity<>(new CMRespDto<>(1, "게시글 조회 성공", boardRespDto), HttpStatus.OK);
 	}
