@@ -71,6 +71,10 @@
 	padding: 0 10px;
 }
 
+.font {
+	font-weight: 400;
+}
+
 .board-items:hover {
 	background-color: #dadada;
 }

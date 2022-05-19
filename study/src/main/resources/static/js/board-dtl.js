@@ -37,7 +37,7 @@ function load() {
 }
 
 updateBtn.onclick = () => {
-	location.href = `/board/${boardCode}`;
+	location.replace(`/board/${boardCode}`);
 }
 
 deleteBtn.onclick = () => {

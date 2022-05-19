@@ -17,5 +17,14 @@
   			now()
   		);
   	</insert>
+  	
+  	<select id="isUsercode" parameterType="Integer" resultType="Integer">
+  		select
+  			count(usercode)
+  		from
+  			user_mst
+  		where
+  			usercode = #{usercode};
+  	</select>
   
   </mapper>

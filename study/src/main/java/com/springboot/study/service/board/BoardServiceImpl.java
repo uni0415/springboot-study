@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.study.domain.board.BoardMst;
 import com.springboot.study.domain.board.BoardRepository;
+import com.springboot.study.domain.user.UserRepository;
 import com.springboot.study.web.dto.board.BoardInsertReqDto;
 import com.springboot.study.web.dto.board.BoardRespDto;
 import com.springboot.study.web.dto.board.BoardUpdateReqDto;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class BoardServiceImpl implements BoardService {
 	
 	private final BoardRepository boardRepository;
+	private final UserRepository userRepository;
 	
 	
 	@Override
@@ -48,7 +50,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardRespDto> getBoardListByPage(int page) throws Exception {
 		List<BoardRespDto> boardRespDtos = new ArrayList<BoardRespDto>();
 		
-		List<Map<String, Object>> boardListAll = boardRepository.getBoardListByPage((page -1) * 5);
+		List<Map<String, Object>> boardListAll = boardRepository.getBoardListByPage((page -1) * 7);
 		for(Map<String, Object> boardMap : boardListAll) {
 			boardRespDtos.add(BoardRespDto.builder()
 			.boardCode((Integer)(boardMap.get("board_code")))
@@ -65,18 +67,23 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int createBoard(BoardInsertReqDto boardInsertReqDto) throws Exception {
-		BoardMst boardMst = boardInsertReqDto.toBoardMstEntity();
-		int result = boardRepository.insertBoard(boardMst);
-		if(result>0) {
-			return boardMst.getBoard_code();
+		if(userRepository.isUsercode(boardInsertReqDto.getUsercode())>0){
+			BoardMst boardMst = boardInsertReqDto.toBoardMstEntity();
+			int result = boardRepository.insertBoard(boardMst);
+			if(result>0) {
+				return boardMst.getBoard_code();
+			}
+			return 0;
+		}else {
+			return 0;
 		}
-		return 0;
 	}
 	
 	@Override
 	public BoardRespDto getBoard(int boardCode) throws Exception {
 		Map<String, Object> boardMap = boardRepository.getBoardByBoardCode(boardCode);
 		return BoardRespDto.builder()
+				
 				.boardCode((Integer)(boardMap.get("board_code")))
 				.title((String) (boardMap.get("board_title")))
 				.content((String)(boardMap.get("board_content")))
@@ -86,6 +93,10 @@ public class BoardServiceImpl implements BoardService {
 				.build();
 	}
 	
+	@Override
+	public int incrementCount(int boardCode) throws Exception {
+		return boardRepository.incrementCount(boardCode) > 0 ? boardCode : 0;
+	}
 	
 	@Override
 	public int updateBoard(int boardCode, BoardUpdateReqDto boardUpdateReqDto) throws Exception {

@@ -5,25 +5,6 @@ const inputTitle = inputItems[0];
 const inputWriter = inputItems[1];
 const textareaItem = document.querySelector(".textarea-item");
 
-/*
-	Promise
-*/
-
-function test(data) {
-	return new Promise((resolve, reject) => {
-		if (data > 100) {
-			resolve(data);
-		} else {
-			throw reject(new Error("data가 100보다 작거나 같습니다."));
-		}
-	});
-}
-
-test(500)
-	.then(testData => testData + 100)
-	//.then(testData2 => alert(testData2))
-	.catch(error => { console.log(error) });
-
 
 submitBtn.onclick = () => {
 	submit();
@@ -57,7 +38,7 @@ function submit() {
 	let option = {
 		method: "POST",
 		headers: {
-			"Content-Type": "application/json"
+			"Content-Type" : "application/json"
 		},
 		body: JSON.stringify({
 			title: inputTitle.value,

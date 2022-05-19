@@ -53,7 +53,7 @@
   			left outer join user_mst um on(um.usercode = bm.board_writer)
   		order by
   			board_code desc
-  		limit #{index}, 5;
+  		limit #{index}, 7;
   	</select>
   	
   	
@@ -106,5 +106,15 @@
   		where
   			board_code = #{boardCode};
   	</delete>
+  	
+  	
+  	<update id="incrementCount" parameterType="Integer">
+  		update
+  			board_mst
+  		set
+  			board_count = board_count + 1
+  		where
+  			board_code = #{boardCode};
+  	</update>
   	
   </mapper>

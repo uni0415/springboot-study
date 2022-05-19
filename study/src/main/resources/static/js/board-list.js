@@ -50,7 +50,7 @@ function createPageNumber(data) {
 	const prev = document.querySelector(".prev");
 	const next = document.querySelector(".next");
 	
-	const totalPageCount = parseInt(data % 5) == 0 ? data / 5 : (data / 5) + 1;
+	const totalPageCount = parseInt(data % 7) == 0 ? data / 7 : (data / 7) + 1;
 
 	const startIndex = nowPage % 5 == 0 ? nowPage - 4 : nowPage - nowPage % 5 + 1;
 	const endIndex = startIndex + 4 <= totalPageCount ? startIndex + 4 : totalPageCount;

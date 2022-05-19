@@ -44,7 +44,6 @@ public class BoardController {
 	
 	@PostMapping("/board")
 	public ResponseEntity<?> createBoard(@Valid @RequestBody BoardInsertReqDto boardInsertReqDto, BindingResult bindingResult) throws Exception{
-		System.out.println(boardInsertReqDto);
 		int board_code = boardService.createBoard(boardInsertReqDto);
 		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 작성 완료", board_code), HttpStatus.OK);
 	}
@@ -52,7 +51,7 @@ public class BoardController {
 	
 	@GetMapping("/board/{boardCode}")
 	public ResponseEntity<?> getBoard(@PathVariable int boardCode) throws Exception {
-		System.out.println(boardCode);
+		boardService.incrementCount(boardCode);
         BoardRespDto boardRespDto =  boardService.getBoard(boardCode);
 		return new ResponseEntity<>(new CMRespDto<>(1, "게시글 조회 성공", boardRespDto), HttpStatus.OK);
 	}

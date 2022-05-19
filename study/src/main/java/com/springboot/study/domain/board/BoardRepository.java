@@ -14,4 +14,5 @@ public interface BoardRepository {
 	public int updateBoard(BoardMst boardMst) throws Exception;
 	public int deleteBoard(int boardCode) throws Exception;
 	public int getBoardListCount() throws Exception;
+	public int incrementCount(int boardCode) throws Exception;
 }
