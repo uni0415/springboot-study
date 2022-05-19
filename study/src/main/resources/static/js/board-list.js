@@ -1,13 +1,12 @@
 const boardListTable = document.querySelector(".board-list-table");
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
+
 
 let nowPage = 1;
 
 load(nowPage);
 
 function load(page) {
-	let url = "/board/list?page="+page;
+	let url = `/api/board/list?page=${page}`;
 	
 	fetch(url)
 	.then(response => {
@@ -48,11 +47,15 @@ function load(page) {
 
 function createPageNumber(data) {
 	const boardListPage = document.querySelector(".board-list-page");
+	const prev = document.querySelector(".prev");
+	const next = document.querySelector(".next");
+	
 	const totalPageCount = parseInt(data % 5) == 0 ? data / 5 : (data / 5) + 1;
 
 	const startIndex = nowPage % 5 == 0 ? nowPage - 4 : nowPage - nowPage % 5 + 1;
 	const endIndex = startIndex + 4 <= totalPageCount ? startIndex + 4 : totalPageCount;
-
+	
+	
 	let pageStr = ``
 	
 	for (let i = startIndex; i <= endIndex; i++) {
@@ -69,12 +72,12 @@ function createPageNumber(data) {
 	}
 
 	prev.onclick = () => {
-		nowPage = startIndex-1;
+		nowPage = startIndex != 1 ? startIndex - 1 : 1;
 		load(nowPage);
 	}
 	
 	next.onclick = () => {
-		nowPage = endIndex + 1;
+		nowPage = endIndex != totalPageCount ? endIndex + 1 : totalPageCount;
 		load(nowPage);
 	}
 	
@@ -89,10 +92,6 @@ function createPageNumber(data) {
 	}else {
 		next.classList.remove("block");
 	}
-	
-	
-	
-
 	
 }
 
@@ -124,7 +123,7 @@ function getBoardItems() {
 	const boardItems = document.querySelectorAll('.board-items');
 	for (let i = 0; i < boardItems.length; i++) {
 		boardItems[i].onclick = () => {
-			location.href = "/board/dtl/" + boardItems[i].querySelectorAll("td")[0].textContent;
+			location.href = "/board-info/" + boardItems[i].querySelectorAll("td")[0].textContent;
 		}
 	}
 }

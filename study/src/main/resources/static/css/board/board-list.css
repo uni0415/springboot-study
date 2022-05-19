@@ -9,7 +9,14 @@
 	width: 1000px;
 }
 
+.board-list > button {
+	position: absolute;
+	bottom: -30px;
+	right: 93px;
+}
+
 .board-list {
+	position: relative;
 	display : flex;
 	justify-content: center;
 	align-items: center;

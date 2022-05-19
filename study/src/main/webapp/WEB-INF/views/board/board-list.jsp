@@ -24,13 +24,13 @@
 				
 				</tbody>
 			</table>
+			<button onclick="location.href='/board'">작성</button>
 		</div>
 		<div class="page-box">
-		<div class="prev">이전</div>
-			<div class="board-list-page">
-			</div>
-		<div class="next">다음</div>
-			
+			<div class="prev">&lt;&lt;</div>
+				<div class="board-list-page">
+				</div>
+			<div class="next">&gt;&gt;</div>
 		</div>
 		
 	</div>
