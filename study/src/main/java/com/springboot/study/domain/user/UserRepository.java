@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserRepository {
-	public int signup(UserMst userMst) throws Exception;
 	public int isUsercode(int usercode) throws Exception;
+	public int insertUser(User user);
+	public User findUserByUsername(String username);
 }

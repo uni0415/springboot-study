@@ -51,7 +51,6 @@ public class UserController {
 
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) throws Exception {
-		userService.signup(signupReqDto);
 		return new ResponseEntity<>(new CMRespDto<SignupReqDto>(1, "회원가입 완료", signupReqDto), HttpStatus.OK);
 	}
 
