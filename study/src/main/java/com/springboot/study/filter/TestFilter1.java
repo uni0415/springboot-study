@@ -13,7 +13,6 @@ public class TestFilter1 implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		System.out.println("1번 필터");
 		
 		chain.doFilter(request, response);
 	}

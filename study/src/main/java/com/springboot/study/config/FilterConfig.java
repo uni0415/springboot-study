@@ -13,7 +13,7 @@ public class FilterConfig {
 	public FilterRegistrationBean<TestFilter1> filter1(){
 		FilterRegistrationBean<TestFilter1> bean = new FilterRegistrationBean<TestFilter1>(new TestFilter1());
 		bean.addUrlPatterns("/*");
-		bean.setOrder(1);
+		bean.setOrder(1); //필터의 우선순위
 		return bean;
 	}
 	

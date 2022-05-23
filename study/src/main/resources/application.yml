@@ -19,6 +19,11 @@ spring:
     password: toor
   security:    user:      name: test
       password: 1234
+    oauth2:      client:        registration:          google:
+            client-id: 504145547452-6hitc44f1nlbm9g81e976s52kngq9rth.apps.googleusercontent.com
+            client-secret: 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
+            scope:            - email
+            - profile
     
 mybatis:  mapper-locations:  - /mappers/*.xml
     

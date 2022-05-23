@@ -11,6 +11,7 @@
 		<input type="text" name="username" placeholder="아이디"><br>
 		<input type="password" name="password" placeholder="비밀번호"><br>
 		<button>로그인</button>
+		<a href="/oauth2/authorization/google">구글 로그인</a>
 	</form>
 </body>
 </html>
