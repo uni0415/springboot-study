@@ -50,6 +50,15 @@ public class AccountServiceImpl implements AccountService {
 				}
 			}
 			return false;
-			
 		}
+	
+	@Override
+	public boolean updateProfile(User user) {
+		return userRepository.updateProfile(user) > 0;
+	}
+	
+	@Override
+	public User getUserByUsercode(int usercode) {
+		return userRepository.getUserByUsercode(usercode);
+	}
 }

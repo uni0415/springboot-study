@@ -24,11 +24,24 @@
   	
   	<select id="findUserByUsername" parameterType="String" resultType="com.springboot.study.domain.user.User">
   		select
-  			*
+  			um.*,
+  			ud.profile_img_url
   		from
-  			user_mst
+  			user_mst um
+  			left outer join user_dtl ud on(ud.user_code = um.usercode)
   		where
   			username = #{username};
+  	</select>
+  	
+  	<select id="getUserByUsercode" parameterType="Integer" resultType="com.springboot.study.domain.user.User">
+  		select
+  			um.*,
+  			ud.profile_img_url
+  		from
+  			user_mst um
+  			left outer join user_dtl ud on(ud.user_code = um.usercode)
+  		where
+  			usercode = #{usercode};
   	</select>
   	
   	<select id="isUsercode" parameterType="Integer" resultType="Integer">
@@ -58,6 +71,17 @@
   			profile_img_url = #{profile_img_url}
   		where
   			user_code = #{usercode}
+  	</update>
+  	
+  	<update id="updateProfile" parameterType="com.springboot.study.domain.user.User">
+  		update
+  			user_mst
+  		set
+  			username = #{username},
+  			email = #{email},
+  			name = #{name}
+  		where
+  			usercode = #{usercode}
   	</update>
   
   </mapper>

@@ -9,4 +9,6 @@ public interface UserRepository {
 	public User findUserByUsername(String username);
 	public User findOAuth2UserByOAuth2Username(String oAuth2_username);
 	public int updateProfileImg(User user);
+	public int updateProfile(User user);
+	public User getUserByUsercode(int usercode);
 }
