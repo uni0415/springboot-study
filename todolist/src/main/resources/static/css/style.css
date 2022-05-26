@@ -1,0 +1,39 @@
+/*
+ * mt : main title
+ */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Indie+Flower&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 30px auto;
+    width: 600px;
+}
+
+.mt-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 600px;
+}

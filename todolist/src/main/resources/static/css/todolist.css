@@ -1,0 +1,123 @@
+.title-box {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(251, 163, 112);
+    border: 2px solid rgb(251, 163, 112);
+}
+
+h1 {
+    position: absolute;
+    top: 35px;
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    font-size: 50px;
+    text-align: center;
+    line-height: 80px;
+}
+
+.add-list {
+    margin-top: 20px;
+    display: flex;
+	padding-left: 30px;
+    width: 100%;
+}
+
+.add-todo {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.fa-square-plus {
+    margin: 3px 5px 0 0;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    background-color: none;
+}
+
+.fa-pencil,
+.fa-trash-can {
+    padding-right: 15px;
+}
+
+.list-input {
+    padding-left: 20px;
+    background: none;
+    width: 100%;
+}
+
+i {
+    color: rgb(5, 54, 132);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+i:hover {
+    color: black;
+}
+
+.list-content-box {
+    padding-left: 30px;
+}
+
+.list-table {
+    width: 100%;
+}
+
+.to-do-list:hover {
+    background-color: rgba(251, 163, 112, 0.3);
+}
+
+.to-do-list.noneaction {
+    display: none;
+}
+
+.to-do-list {
+    position: relative;
+    display: inline-block;
+    width: 570px;
+    font-size: 30px;
+}
+
+.action-box.action {
+    display: block;
+}
+
+.action-box {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+}
+
+.update-list-input-box.action {
+    display: inline-block;
+}
+
+.update-list-input-box {
+    position: relative;
+    display: none;
+    width: 100%;
+    font-size: 30px;
+    background-color: rgba(36, 136, 224, 0.3);
+}
+
+.action-box2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+button {
+    margin-right: 10px;
+    cursor: pointer;
+}
