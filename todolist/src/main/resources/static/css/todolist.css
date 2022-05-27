@@ -21,7 +21,7 @@ h1 {
 .add-list {
     margin-top: 20px;
     display: flex;
-	padding-left: 30px;
+    padding-left: 30px;
     width: 100%;
 }
 
@@ -29,6 +29,8 @@ h1 {
     margin-left: 10px;
     width: 100%;
 }
+
+
 
 .checkbox {
     width: 20px;
@@ -51,6 +53,7 @@ h1 {
 
 .list-input {
     padding-left: 20px;
+    font-size: 30px;
     background: none;
     width: 100%;
 }
@@ -65,9 +68,7 @@ i:hover {
     color: black;
 }
 
-.list-content-box {
-    padding-left: 30px;
-}
+
 
 .list-table {
     width: 100%;
@@ -84,8 +85,12 @@ i:hover {
 .to-do-list {
     position: relative;
     display: inline-block;
-    width: 570px;
-    font-size: 30px;
+    padding: 5px 0 5px 30px;
+    width: 600px;
+}
+
+.to-do-list > .text {
+	font-size: 30px;
 }
 
 .action-box.action {
@@ -95,12 +100,13 @@ i:hover {
 .action-box {
     position: absolute;
     display: none;
-    top: 0;
+    top: 7px;
     right: 0;
 }
 
 .update-list-input-box.action {
     display: inline-block;
+    line-height: 48px;
 }
 
 .update-list-input-box {
@@ -117,7 +123,14 @@ i:hover {
     right: 0;
 }
 
+button:hover {
+    background-color: #dadada
+}
+
 button {
     margin-right: 10px;
+    width: 60px;
+    border-radius: 8px;
+    background-color: white;
     cursor: pointer;
 }

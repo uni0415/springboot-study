@@ -2,6 +2,8 @@ package com.springboot.todolist.web.controller.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +37,7 @@ public class ToDoListController {
 	
 	//내용 추가
 	@PostMapping("/todo")
-	public ResponseEntity<?> addToDo(@RequestBody ToDoListReqDto toDoListReqDto) {
+	public ResponseEntity<?> addToDo(@Valid @RequestBody ToDoListReqDto toDoListReqDto) {
 		toDoListService.addToDoList(toDoListReqDto.toListEntity());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

@@ -3,7 +3,6 @@ const addTodo = document.querySelector("input");
 const listTable = document.querySelector(".list-table");
 
 load();
-
 add.onclick = () => {
     if (addTodo.value.length < 1) {
         alert("할 일을 입력해주세요");
@@ -27,12 +26,19 @@ add.onclick = () => {
                     throw new Error("에러");
                 }
             })
-            .then(data => {
+            .then(() => {
                 location.reload();
             })
             .catch(error => console.log(error));
     }
 }
+
+addTodo.onkeydown = (e) => {
+    if (e.keyCode == 13) {
+        add.onclick();
+    }
+}
+
 
 function load() {
 
@@ -58,14 +64,14 @@ function getList(data) {
         listTable.innerHTML += `
             <li class="to-do-list">
                 <input type="checkbox" class="checkbox">
-                ${data[i].content}
+                <span class="text">${data[i].content}</span>
                 <div class="action-box">
                     <i class="fa-solid fa-pencil"></i>
                     <i class="fa-solid fa-trash-can"></i>
                 </div>
             </li>
             <li class="update-list-input-box">
-                <input type="text" class="list-input" value="${data[i].content}">
+                <input type="text" class="list-input">
                 <div class="action-box2">
                     <button class="submit-btn">확인</button>
 			        <button class="cancel-btn">취소</button>
@@ -93,8 +99,6 @@ function buttonActions(data) {
     listUpdate();
     listDelete();
 
-
-
     function mouseevent() {
         for (let i = 0; i < toDoList.length; i++) {
             toDoList[i].onmouseover = () => {
@@ -111,6 +115,9 @@ function buttonActions(data) {
             updateBtn[i].onclick = () => {
                 toDoList[i].classList.add("noneaction");
                 updateListInput[i].classList.add("action");
+                listInput[i].focus();
+                const text = toDoList[i].querySelector(".text").innerText;
+                listInput[i].value = text;
             }
         }
     }
@@ -148,6 +155,12 @@ function buttonActions(data) {
                         }
                     })
                     .catch(error => console.log(error));
+            }
+
+            listInput[i].onkeydown = (e) => {
+                if (e.keyCode == 13) {
+                    submitBtn[i].onclick();
+                }
             }
         }
     }
