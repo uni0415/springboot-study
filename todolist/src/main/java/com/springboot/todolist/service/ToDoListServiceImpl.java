@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.todolist.domain.ToDoListMst;
 import com.springboot.todolist.domain.ToDoListRepository;
-import com.springboot.todolist.dto.ToDoListReqDto;
 import com.springboot.todolist.dto.ToDoListRespDto;
 
 import lombok.RequiredArgsConstructor;
@@ -48,5 +47,10 @@ public class ToDoListServiceImpl implements ToDoListService {
 	@Override
 	public boolean deleteList(int id) {
 		return toDoListRepository.deleteList(id)>0;
+	}
+	
+	@Override
+	public boolean signinToDo() {
+		return false;
 	}
 }

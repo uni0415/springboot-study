@@ -36,6 +36,12 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.10</version>
 		</dependency>
+		
+		<!-- spring-boot-starter-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>

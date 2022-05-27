@@ -87,9 +87,8 @@ public class AuthController {
 	
 	@GetMapping("/authentication")
 	public ResponseEntity<?> getAuthentication(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(principalDetails.getUser().getPassword());
 		String password = principalDetails.getUser().getPassword();
-		System.out.println(bCryptPasswordEncoder.matches("1234", password));
+		bCryptPasswordEncoder.matches("1234", password);
 		return new ResponseEntity<>(new CMRespDto<PrincipalDetails>(1, "세션정보", principalDetails), HttpStatus.OK);
 	}
 	

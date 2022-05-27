@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.todolist.domain.User;
+import com.springboot.todolist.dto.SignupReqDto;
 import com.springboot.todolist.dto.ToDoListReqDto;
 import com.springboot.todolist.dto.ToDoListRespDto;
 import com.springboot.todolist.service.ToDoListService;
@@ -44,7 +46,7 @@ public class ToDoListController {
 	
 	//내용 수정
 	@PutMapping("/todo/{id}")
-	public ResponseEntity<?> modifiTodo(@PathVariable int id, @RequestBody ToDoListReqDto toDoListReqDto) {
+	public ResponseEntity<?> modifiTodo(@PathVariable int id, @Valid @RequestBody ToDoListReqDto toDoListReqDto) {
 		if(toDoListService.updateToDoList(toDoListReqDto.toListEntity())) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}else {
@@ -61,4 +63,5 @@ public class ToDoListController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
 }

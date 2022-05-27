@@ -11,4 +11,5 @@ public interface ToDoListService {
 	public List<ToDoListRespDto> getListAll();
 	public boolean updateToDoList(ToDoListMst toDoListMst);
 	public boolean deleteList(int id);
+	public boolean signinToDo();
 }

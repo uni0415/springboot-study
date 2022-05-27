@@ -10,4 +10,14 @@ public class PageController {
 	public String index() {
 		return "todolist/todolist";
 	}
+	
+	@GetMapping("/signin")
+	public String signin() {
+		return "todolist/signin";
+	}
+	
+	@GetMapping("/signup")
+	public String signup() {
+		return "todolist/signup";
+	}
 }

@@ -12,4 +12,5 @@ public interface ToDoListRepository {
 	public List<Map<String, Object>> getListAll();
 	public int updateToDoList(ToDoListMst toDoListMst);
 	public int deleteList(int id);
+	
 }
