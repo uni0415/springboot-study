@@ -24,14 +24,15 @@ public class ToDoListServiceImpl implements ToDoListService {
 	}
 
 	@Override
-	public List<ToDoListRespDto> getListAll() {
-
+	public List<ToDoListRespDto> getListAll(int usercode) {
 		List<ToDoListRespDto> listDtos = new ArrayList<ToDoListRespDto>();
-		List<Map<String, Object>> listAll = toDoListRepository.getListAll();
+		List<Map<String, Object>> listAll = toDoListRepository.getListAll(usercode);
 
 		for (Map<String, Object> listMap : listAll) {
 			listDtos.add(ToDoListRespDto.builder()
 					.id((Integer) (listMap.get("id")))
+					.usercode((Integer) (listMap.get("usercode")))
+					.name((String) (listMap.get("name")))
 					.content((String) (listMap.get("content")))
 					.build());
 		}

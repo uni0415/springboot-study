@@ -14,5 +14,6 @@ public class ToDoListRespDto {
 
 	private int id;
 	private int usercode;
+	private String name;
 	private String content;
 }

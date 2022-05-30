@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.study.annotation.Validation;
 import com.springboot.study.config.auth.PrincipalDetails;
 import com.springboot.study.domain.user.User;
 import com.springboot.study.domain.user.UserRepository;
@@ -50,11 +51,13 @@ public class AuthController {
 		return new ResponseEntity<>(cmRespDto, status);
 	}
 
+	@Validation
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) throws Exception {
 		return new ResponseEntity<>(new CMRespDto<SignupReqDto>(1, "회원가입 완료", signupReqDto), HttpStatus.OK);
 	}
 
+	@Validation
 	@PostMapping("/auth/signin")
 	public ResponseEntity<?> signin(@Valid SigninReqDto signinReqDto, BindingResult bindingResult) {
 		User user = new User();

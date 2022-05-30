@@ -8,7 +8,7 @@ import com.springboot.todolist.dto.ToDoListRespDto;
 public interface ToDoListService {
 
 	public boolean addToDoList(ToDoListMst toDoListMst);
-	public List<ToDoListRespDto> getListAll();
+	public List<ToDoListRespDto> getListAll(int usercode);
 	public boolean updateToDoList(ToDoListMst toDoListMst);
 	public boolean deleteList(int id);
 	public boolean signinToDo();

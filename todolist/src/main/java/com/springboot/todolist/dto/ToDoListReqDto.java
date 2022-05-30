@@ -14,12 +14,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class ToDoListReqDto {
 	private int id;
+	private int usercode;
 	@NotBlank
 	private String content;
 	
 	public ToDoListMst toListEntity() {
 		return ToDoListMst.builder()
 				.id(id)
+				.usercode(usercode)
 				.content(content)
 				.build();
 	}

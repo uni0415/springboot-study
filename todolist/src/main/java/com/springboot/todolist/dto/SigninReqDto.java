@@ -2,6 +2,8 @@ package com.springboot.todolist.dto;
 
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 import com.springboot.todolist.domain.User;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +21,9 @@ import lombok.Getter;
 @NoArgsConstructor
 public class SigninReqDto {
 
+	@NotBlank
 	private String username;
+	@NotBlank
 	private String password;
 	
 	public User toEntity() {

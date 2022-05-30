@@ -54,6 +54,16 @@ input {
     justify-content: space-around;
 }
 
+.naver-login {
+	width: 140px;
+    background-color: rgba(20, 85, 171, 0.2);
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
 button {
     width: 90px;
     background-color: rgba(20, 85, 171, 0.2);

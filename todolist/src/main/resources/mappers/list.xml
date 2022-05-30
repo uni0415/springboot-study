@@ -6,6 +6,7 @@
   	<resultMap type="HashMap" id="listMap">
   		<id column="id" property="id"/>
   		<id column="usercode" property="usercode"/>
+  		<id column="name" property="name"/>
   		<id column="content" property="content"/>
   		<id column="create_date" property="create_date"/>
   		<id column="update_date" property="update_date"/>
@@ -15,19 +16,33 @@
   			todolist_mst
   		values(
   			0,
-  			null,
+  			#{usercode},
   			#{content},
   			now(),
   			now()
   		)
   	</insert>
   	
-  	<select id="getListAll" resultMap="listMap">
-  		select
+  	<select id="getListAll" parameterType="Integer" resultMap="listMap">
+  		<!-- select
   			id,
   			content
   		from
   			todolist_mst
+  		where 
+  			usercode = #{usercode} -->
+  		
+  		select
+  			um.name,
+  			tm.id,
+  			tm.usercode,
+  			tm.content
+  		from
+  			user_mst um
+  			left outer join todolist_mst tm on um.usercode = tm.usercode
+  		where
+  			tm.usercode = #{usercode}
+  			
   	</select>
 
   	<update id="updateToDoList" parameterType="com.springboot.todolist.domain.ToDoListMst">

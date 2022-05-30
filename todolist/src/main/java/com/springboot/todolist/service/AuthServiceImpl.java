@@ -28,4 +28,20 @@ public class AuthServiceImpl implements AuthService {
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean checkUsername(String username) {
+		return userRepository.checkUsername(username)>0;
+	}
+	
+	@Override
+	public String getNameByUsercode(int usercode) {
+		String name = userRepository.getNameByUsercode(usercode);
+		return name;
+	}
+	
+	@Override
+	public int insertUser(User user) {
+		return userRepository.insertUser(user);
+	}
 }

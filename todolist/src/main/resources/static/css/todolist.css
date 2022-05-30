@@ -127,6 +127,15 @@ button:hover {
     background-color: #dadada
 }
 
+.logout-btn {
+	margin-top: 50px;
+	margin-left: 30px;
+	width: 90px;
+    background-color: rgba(20, 85, 171, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 button {
     margin-right: 10px;
     width: 60px;

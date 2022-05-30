@@ -6,7 +6,7 @@ let nowPage = 1;
 load(nowPage);
 
 function load(page) {
-	let url = `/api/board/list?page=${page}`;
+	let url = `/api/board/list/${page}`;
 	
 	fetch(url)
 	.then(response => {
@@ -17,30 +17,15 @@ function load(page) {
 		}
 	})	
 	.then(result => {
+		console.log(result);
+		console.log(result.data);
 		getBoardList(result.data);
 		createPageNumber(result.data[0].boardCountAll);
 		getBoardItems();
 	})
-	.catch(error => {console.log(error);});
-
-
-	/*$.ajax({
-		type: "get",
-		url: "/board/list",
-		data: {
-			"page": page,
-		},
-		dataType: "text",
-		success: function(data) {
-			let boardList = JSON.parse(data);
-			getBoardList(boardList.data);
-			createPageNumber(boardList.data[0].boardCountAll);
-			getBoardItems();
-		},
-		error: function() {
-			alert("비동기 처리 오류");
-		}
-	});*/
+	.catch(error => {
+		console.log(error);
+	});
 }
 
 

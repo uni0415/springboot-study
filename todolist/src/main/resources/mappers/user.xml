@@ -4,11 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.springboot.todolist.domain.UserRepository">
   
+  	<insert id="insertUser" parameterType="com.springboot.todolist.domain.User"
+  	 useGeneratedKeys="true" keyProperty="usercode">
+  	 	insert into
+  	 		user_mst
+  	 	values(
+  	 		0,
+  	 		#{email},
+  	 		#{name},
+  	 		#{username},
+  	 		#{oAuth2_username},
+  	 		#{password},
+  	 		#{roles},
+  	 		#{provider},
+  	 		now(),
+  	 		now()
+  	 	)
+  	 	
+  	 </insert>
+  
   	<insert id="signup" parameterType="com.springboot.todolist.domain.User">
   		insert into
   			user_mst
   		values(
   			0,
+  			#{name},
   			#{username},
   			#{password},
   			now(),
@@ -32,6 +52,36 @@
   			user_mst
   		where
   			username = #{username}
+  	</select>
+  	
+  	<select id="checkUsername" parameterType="String" resultType="Integer">
+  		select
+  			count(username)
+  		from
+  			user_mst
+  		where
+  			username = #{username}
+  		
+  	</select>
+  	
+  	<select id="getNameByUsercode" parameterType="Integer" resultType="String">
+  		select
+  			name
+  		from
+  			user_mst
+  		where
+  			usercode = #{usercode}
+  	</select>
+  	
+  	<select id="findOAuth2UserByOAuth2Username" parameterType="String" resultType="com.springboot.todolist.domain.User">
+  		select
+  			um.*,
+  			tm.content
+  		from
+  			user_mst um
+  			left outer join todolist_mst tm on(tm.usercode = um.usercode)
+  		where
+  			oauth2_username = #{oAuth2Username}
   	</select>
   
   </mapper>

@@ -31,8 +31,9 @@ import com.springboot.study.handler.ex.CustomValidationApiExeption;
 @Component
 public class ValidationAdvice {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
-	@Around("execution(* com.springboot.study.web.controller.api.*Controller.*(..))")
+	private final Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
+	//@Around("execution(* com.springboot.study.web.controller.api.*Controller.*(..))")
+	@Around("execution(* com.springboot.study.*test.*Controller.*(..))")
 	public Object ApiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		Object[] args = proceedingJoinPoint.getArgs();
 		for(Object arg : args) {

@@ -9,14 +9,7 @@ import com.springboot.study.filter.TestFilter2;
 
 @Configuration
 public class FilterConfig {
-	@Bean
-	public FilterRegistrationBean<TestFilter1> filter1(){
-		FilterRegistrationBean<TestFilter1> bean = new FilterRegistrationBean<TestFilter1>(new TestFilter1());
-		bean.addUrlPatterns("/*");
-		bean.setOrder(1); //필터의 우선순위
-		return bean;
-	}
-	
+
 	@Bean
 	public FilterRegistrationBean<TestFilter2> filter2(){
 		FilterRegistrationBean<TestFilter2> bean = new FilterRegistrationBean<TestFilter2>(new TestFilter2());
