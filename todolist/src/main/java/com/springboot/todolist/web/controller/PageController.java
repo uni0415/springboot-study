@@ -11,13 +11,13 @@ public class PageController {
 		return "todolist/todolist";
 	}
 	
-	@GetMapping("/signin")
+	@GetMapping("/auth/signin")
 	public String signin() {
-		return "todolist/signin";
+		return "auth/signin";
 	}
 	
-	@GetMapping("/signup")
+	@GetMapping("/auth/signup")
 	public String signup() {
-		return "todolist/signup";
+		return "auth/signup";
 	}
 }

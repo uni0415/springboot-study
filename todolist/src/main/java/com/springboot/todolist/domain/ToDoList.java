@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 public class ToDoList {
 	
 	private int id;
 	private int usercode;
+	private String username;
+	private String name;
 	private String content;
 	
 	public ToDoListRespDto toListDto() {

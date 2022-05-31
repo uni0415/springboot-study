@@ -1,36 +1,40 @@
 const signinBtn = document.querySelector(".signin-btn");
 const signupBtn = document.querySelector(".signup-btn");
+const inputs = document.querySelectorAll("input");
 
 signupBtn.onclick = () => {
-	location.replace("/signup");
+	location.replace("/auth/signup");
 }
 
 signinBtn.onclick = () => {
-	const inputs = document.querySelectorAll("input");
 
-	let url = "/todo/checkUsername";
-	let option = {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			username: inputs[0].value
-		})
-	};
-
-	fetch(url, option)
-		.then(response => {
-			console.log(response)
-			if (response.ok) {
-				console.log(response)
-				document.querySelector("form").submit();
-			} else {
-				alert("로그인 실패");
-				throw new Error("에러");
-			}
-		})
-		.catch(error => console.log(error));
+		let url = "/todo/checkUsername";
+		let option = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body:JSON.stringify({
+				username: inputs[0].value
+			})
+		};
+		fetch(url, option)
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+					
+				} else {
+					throw new Error("없는 아이디");
+				}
+			})
+			.then(data => {
+				if(data == false) {
+					alert("존재하지 않는 아이디입니다.");
+				}else {
+					document.querySelector("form").submit();
+				}
+			})
+			.catch(error => console.log(error));
 
 }
 

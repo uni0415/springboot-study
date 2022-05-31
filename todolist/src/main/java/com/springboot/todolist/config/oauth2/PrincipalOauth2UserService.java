@@ -1,6 +1,5 @@
 package com.springboot.todolist.config.oauth2;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

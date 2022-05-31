@@ -2,11 +2,10 @@ package com.springboot.todolist.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.springboot.todolist.domain.ToDoListMst;
+import com.springboot.todolist.domain.ToDoList;
 import com.springboot.todolist.domain.ToDoListRepository;
 import com.springboot.todolist.dto.ToDoListRespDto;
 
@@ -19,30 +18,25 @@ public class ToDoListServiceImpl implements ToDoListService {
 	private final ToDoListRepository toDoListRepository;
 
 	@Override
-	public boolean addToDoList(ToDoListMst todoListMst) {
-		return toDoListRepository.addToDoList(todoListMst) > 0;
+	public boolean addToDoList(ToDoList todoList) {
+		return toDoListRepository.addToDoList(todoList) > 0;
 	}
 
 	@Override
 	public List<ToDoListRespDto> getListAll(int usercode) {
 		List<ToDoListRespDto> listDtos = new ArrayList<ToDoListRespDto>();
-		List<Map<String, Object>> listAll = toDoListRepository.getListAll(usercode);
+		List<ToDoList> listAll = toDoListRepository.getListAll(usercode);
 
-		for (Map<String, Object> listMap : listAll) {
-			listDtos.add(ToDoListRespDto.builder()
-					.id((Integer) (listMap.get("id")))
-					.usercode((Integer) (listMap.get("usercode")))
-					.name((String) (listMap.get("name")))
-					.content((String) (listMap.get("content")))
-					.build());
+		for (ToDoList list : listAll) {
+			listDtos.add(list.toListDto());
 		}
 		return listDtos;
 
 	}
 
 	@Override
-	public boolean updateToDoList(ToDoListMst toDoListMst) {
-		return toDoListRepository.updateToDoList(toDoListMst)>0;
+	public boolean updateToDoList(ToDoList toDoList) {
+		return toDoListRepository.updateToDoList(toDoList)>0;
 	}
 	
 	@Override

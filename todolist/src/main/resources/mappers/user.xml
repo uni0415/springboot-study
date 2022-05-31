@@ -75,11 +75,9 @@
   	
   	<select id="findOAuth2UserByOAuth2Username" parameterType="String" resultType="com.springboot.todolist.domain.User">
   		select
-  			um.*,
-  			tm.content
+  			*
   		from
-  			user_mst um
-  			left outer join todolist_mst tm on(tm.usercode = um.usercode)
+  			user_mst
   		where
   			oauth2_username = #{oAuth2Username}
   	</select>

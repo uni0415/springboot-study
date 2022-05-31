@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.todolist.annotation.app.Validation;
@@ -40,8 +42,9 @@ public class AuthController {
 	 * ResponseEntity<>(HttpStatus.BAD_REQUEST); } }
 	 */
 	
-	@PostMapping("/todo/signup")
+	@PostMapping("/auth/todo/signup")
 	public ResponseEntity<?> signup(@RequestBody User user) {
+		System.out.println(user);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		List<String> roles = List.of("ROLE_USER");
 		user.setRoles(String.join(",", roles));
@@ -55,15 +58,15 @@ public class AuthController {
 		return new ResponseEntity<>(name, HttpStatus.OK);
 	}
 
-	@PostMapping("/todo/signin")
+	@PostMapping("/auth/todo/signin")
 	public ResponseEntity<?> signinToDo(@RequestBody SigninReqDto signinReqDto) {
 		User user = authService.signin(signinReqDto);
 		return new ResponseEntity<>(new CMRespDto<User>(1, "로그인 성공", user), HttpStatus.OK);
 	}
 
 	@PostMapping("/todo/checkUsername")
-	public ResponseEntity<?> checkUsername(@RequestBody String username) {
-		boolean result = authService.checkUsername(username);
+	public ResponseEntity<?> checkUsername(@RequestBody SigninReqDto signinReqDto) {
+		boolean result = authService.checkUsername(signinReqDto.getUsername());
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
